@@ -79,5 +79,5 @@ ponicode   ponicode-ponicode.apps.ocp45demo.local          ponicode   8080-tcp  
 ----
 
 
-Browse to ponicode-ponicode.apps.ocp45demo.local
+Browse to http://ponicode-ponicode.apps.ocp45demo.local
 
