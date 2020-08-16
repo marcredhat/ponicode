@@ -1,4 +1,10 @@
 
+== Ponicode on OpenShift 4.5
+
+Ponicode helps you create, modify and visualise your unit tests in just a few clicks with 
+a straightforward AI-powered interface.
+
+
 ----
 oc new-project ponicode
 Now using project "ponicode" on server "https://api.ocp45demo.local:6443".
@@ -52,3 +58,26 @@ svc/ponicode - 172.30.133.47:8080
       build #1 running for about a minute - f00065d: Update package.json (BeFunes <benedetta@ponicode.com>)
     deployment #1 running for about a minute - 0/1 pods growing to 1
 ----
+
+
+----
+oc get pods
+NAME                        READY   STATUS      RESTARTS   AGE
+ponicode-1-build            0/1     Completed   0          5m10s
+ponicode-57479f9984-mvmwg   1/1     Running     0          38s
+----
+
+----
+oc expose svc ponicode
+route.route.openshift.io/ponicode exposed
+----
+
+----
+oc get route
+NAME       HOST/PORT                                PATH   SERVICES   PORT       TERMINATION   WILDCARD
+ponicode   ponicode-ponicode.apps.ocp45demo.local          ponicode   8080-tcp                 None
+----
+
+
+Browse to ponicode-ponicode.apps.ocp45demo.local
+
