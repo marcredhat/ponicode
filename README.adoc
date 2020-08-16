@@ -21,7 +21,7 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
 
 
 ----
-oc new-app https://github.com/ponicode/demo-project --name ponicode -e OPENSHIFT_NODEJS_IP=0.0.0.0
+oc new-app https://github.com/ponicode/demo-project --name ponicode -e OPENSHIFT_NODEJS_IP=0.0.0.0 -e NODE_ENV=development
 --> Found image 2c78b10 (2 weeks old) in image stream "openshift/nodejs" under tag "12" for "nodejs"
 
     Node.js 12
