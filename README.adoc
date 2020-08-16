@@ -1,0 +1,54 @@
+
+----
+oc new-project ponicode
+Now using project "ponicode" on server "https://api.ocp45demo.local:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+----
+
+
+
+----
+oc new-app https://github.com/ponicode/demo-project --name ponicode
+--> Found image 2c78b10 (2 weeks old) in image stream "openshift/nodejs" under tag "12" for "nodejs"
+
+    Node.js 12
+    ----------
+    Node.js 12 available as container is a base platform for building and running various Node.js 12 applications and frameworks. Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+    Tags: builder, nodejs, nodejs12
+
+    * The source repository appears to match: nodejs
+    * A source build using source code from https://github.com/ponicode/demo-project will be created
+      * The resulting image will be pushed to image stream tag "ponicode:latest"
+      * Use 'oc start-build' to trigger a new build
+
+--> Creating resources ...
+    imagestream.image.openshift.io "ponicode" created
+    buildconfig.build.openshift.io "ponicode" created
+    deployment.apps "ponicode" created
+    service "ponicode" created
+--> Success
+    Build scheduled, use 'oc logs -f bc/ponicode' to track its progress.
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose svc/ponicode'
+    Run 'oc status' to view your app.
+----
+
+
+----
+oc status
+In project ponicode on server https://api.ocp45demo.local:6443
+
+svc/ponicode - 172.30.133.47:8080
+  deployment/ponicode deploys istag/ponicode:latest <-
+    bc/ponicode source builds https://github.com/ponicode/demo-project on openshift/nodejs:12
+      build #1 running for about a minute - f00065d: Update package.json (BeFunes <benedetta@ponicode.com>)
+    deployment #1 running for about a minute - 0/1 pods growing to 1
+----
