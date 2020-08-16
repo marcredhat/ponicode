@@ -21,7 +21,7 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
 
 
 ----
-oc new-app https://github.com/ponicode/demo-project --name ponicode
+oc new-app https://github.com/ponicode/demo-project --name ponicode -e OPENSHIFT_NODEJS_IP=0.0.0.0
 --> Found image 2c78b10 (2 weeks old) in image stream "openshift/nodejs" under tag "12" for "nodejs"
 
     Node.js 12
@@ -80,4 +80,10 @@ ponicode   ponicode-ponicode.apps.ocp45demo.local          ponicode   8080-tcp  
 
 
 Browse to http://ponicode-ponicode.apps.ocp45demo.local
+
+----
+Cleanup
+oc delete all --selector app=ponicode
+----
+
 
